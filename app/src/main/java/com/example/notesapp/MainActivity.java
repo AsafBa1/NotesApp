@@ -74,10 +74,10 @@ public class MainActivity extends AppCompatActivity {
             FirebaseAuth.getInstance().signOut();
             startActivity(new Intent(MainActivity.this,Login.class));
         }
-       // if(item.getItemId() == R.id.map){
-           // startActivity(new Intent(MainActivity.this,Map.class));
+        if(item.getItemId() == R.id.map){
+            startActivity(new Intent(MainActivity.this,Maps.class));
 
-      // }
+       }
         return super.onOptionsItemSelected(item);
     }
     private void displayList(List<Note> allNotes) {
