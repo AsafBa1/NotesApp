@@ -2,6 +2,7 @@ package com.example.notesapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.NavController;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import com.example.notesapp.Model.Adapter;
 import com.example.notesapp.Model.Note;
 import com.example.notesapp.Model.NoteDB;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -33,6 +35,23 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.main_bottomnav);
+        bottomNavigationView.setSelectedItemId(R.id.notes_list);
+
+
+        bottomNavigationView.setOnNavigationItemReselectedListener(new BottomNavigationView.OnNavigationItemReselectedListener() {
+            @Override
+            public void onNavigationItemReselected(@NonNull MenuItem item) {
+                if(item.getItemId() == R.id.map_bot){
+                    startActivity(new Intent(MainActivity.this,Maps.class));
+                }
+                if(item.getItemId() == R.id.notes_list){
+                    return;
+                }
+
+            }
+        });
 
         noItemText = findViewById(R.id.noItemText);
         Addbtn = (FloatingActionButton) findViewById(R.id.add_btn);

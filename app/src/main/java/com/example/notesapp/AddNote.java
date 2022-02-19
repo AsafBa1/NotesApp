@@ -15,6 +15,8 @@ import android.widget.EditText;
 
 import com.example.notesapp.Model.Note;
 import com.example.notesapp.Model.NoteDB;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.LatLng;
 
 import java.util.Calendar;
 
@@ -24,6 +26,7 @@ public class AddNote extends AppCompatActivity {
     Calendar c;
     String todayDate;
     String currentTime;
+    Maps mMAP;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +89,7 @@ public class AddNote extends AppCompatActivity {
             Note note = new Note(noteTitle.getText().toString(),noteDetails.getText().toString(),todayDate,currentTime);
             NoteDB db = new NoteDB(this);
             db.addNote(note);
+            //LatLng notepositon = new LatLng(mMAP.fusedLocationClient.la)
             goToMain();
         }
         return super.onOptionsItemSelected(item);
